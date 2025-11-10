@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kendy & Sally | A Community of Connection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fefcf5; /* Creamy White */
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #a855f7, #ec4899, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        .cta-button {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: color 0.4s ease-in-out;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #a855f7, #ec4899, #f59e0b);
+            background-size: 200% 200%;
+            z-index: -1;
+            transition: opacity 0.4s ease-in-out;
+            opacity: 0;
+            animation: gradient-animation 5s ease infinite;
+        }
+
+        .cta-button:hover::before {
+            opacity: 1;
+        }
+        
+        .cta-button:hover {
+            color: white;
+            box-shadow: 0 0 20px rgba(236, 72, 153, 0.5);
+        }
+
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glowing-line {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem;
+            left: -0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #e5dffc; /* Lavender */
+            border: 3px solid #c4b5fd;
+            z-index: 1;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(229, 223, 252, 0.5);
+        }
+
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #a855f7, #ec4899);
+            transition: width .3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Background Glowing Effects -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="glowing-line w-96 h-96 bg-lavender -top-20 -left-20"></div>
+        <div class="glowing-line w-[500px] h-[500px] bg-mint top-1/4 right-[-150px]"></div>
+        <div class="glowing-line w-80 h-80 bg-peach bottom-0 left-1/3"></div>
+    </div>
+
+    <!-- Header -->
+    <header id="header" class="sticky top-0 z-50 transition-all duration-300 glassmorphism">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold gradient-text">Kendy & Sally</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-gray-700 hover:text-gray-900">Home</a>
+                <a href="#about" class="nav-link text-gray-700 hover:text-gray-900">About Us</a>
+                <a href="#story" class="nav-link text-gray-700 hover:text-gray-900">Our Story</a>
+                <a href="#community" class="nav-link text-gray-700 hover:text-gray-900">Community</a>
+                <a href="#join" class="nav-link text-gray-700 hover:text-gray-900">Join Us</a>
+                <a href="#contact" class="nav-link text-gray-700 hover:text-gray-900">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#home" class="block py-2 text-gray-700">Home</a>
+            <a href="#about" class="block py-2 text-gray-700">About Us</a>
+            <a href="#story" class="block py-2 text-gray-700">Our Story</a>
+            <a href="#community" class="block py-2 text-gray-700">Community</a>
+            <a href="#join" class="block py-2 text-gray-700">Join Us</a>
+            <a href="#contact" class="block py-2 text-gray-700">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: linear-gradient(rgba(254, 252, 245, 0.8), rgba(254, 252, 245, 1)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDQwIDMyMCI+PHBhdGggZmlsbD0iI2Q0ZjhlOCIgZmlsbC1vcGFjaXR5PSIxIiBkPSJNMCAyMjRsNDggMTYuN0M5NiAyNTYgMTkyIDI4OCAyODggMjg4czE5MiAwIDE5Mi0zMmMwLTMxLjctMTkyLTY0LTI4OC03NC43Qzk2IDE3MSAwIDE0OSAwIDEzOC43VjIyNHoiPjwvcGF0aD48cGF0aCBmaWxsPSIjZTVkZmZjIiBmaWxsLW9wYWNpdHk9IjEiIGQ9Ik0wIDEzOC43QzAgMTQ5IDk2IDE3MSAxOTIgMTgxLjNzMjg4IDQyLjcgMzg0IDMyYzE5Mi0yMS4zIDE5Mi0xMDYuMyAyODgtMTE3LjNzMjg4IDIxLjMgMzg0IDMyYzE5MiAyMS4zIDE5Mi0xMC43IDI4OC0xMC43czE5MiAzMiAxOTIgMzJ2LTk2SDB2MTM4Ljd6Ij48L3BhdGg+PC9zdmc+');">
+            <div class="container mx-auto px-6 scroll-fade">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                    <span class="gradient-text">Connecting Hearts,</span><br> Inspiring Minds.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                    Welcome to Kendy & Sally, a warm, inclusive online space for connection, sharing, and support. Let's build a future where technology and humanity blend for lasting emotional connections.
+                </p>
+                <a href="#join" class="cta-button inline-block bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+                    Join Our Community
+                </a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-fade">
+                    <h2 class="text-4xl font-bold gradient-text">Meet Our Founders</h2>
+                    <p class="text-gray-600 mt-2">The visionaries behind our community.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="glassmorphism rounded-2xl p-8 text-center scroll-fade" style="transition-delay: 200ms;">
+                        <img src="image/dkhoi.jpg" alt="Kendy Nguyen" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800">Kendy Nguyen</h3>
+                        <p class="text-gray-600 mt-4">
+                            Kendy is a passionate technologist with a heart for human connection. With a background in software engineering and a love for building supportive networks, she co-founded this space to bridge the gap between digital innovation and genuine empathy.
+                        </p>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-8 text-center scroll-fade" style="transition-delay: 400ms;">
+                        <img src="image/qnhu.jpg" alt="Sally Nguyen" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-md">
+                        <h3 class="text-2xl font-semibold text-gray-800">Sally Nguyen</h3>
+                        <p class="text-gray-600 mt-4">
+                            Sally is a creative soul and community builder dedicated to fostering environments of kindness and growth. Her expertise in user experience and social dynamics ensures that our platform is not just functional, but truly welcoming and inspiring for everyone.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="story" class="py-20 bg-mint/20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 scroll-fade">
+                    <h2 class="text-4xl font-bold gradient-text">Our Journey</h2>
+                    <p class="text-gray-600 mt-2">How a simple idea blossomed into a thriving community.</p>
+                </div>
+                <div class="relative max-w-2xl mx-auto">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item relative pl-8 pb-12 scroll-fade">
+                        <h3 class="text-xl font-semibold text-gray-800">The Spark (2022)</h3>
+                        <p class="text-gray-600 mt-2">Kendy and Sally, long-time friends, share their dream of creating a more positive and connected online world over a cup of coffee. The initial concept is born.</p>
+                    </div>
+                    <div class="timeline-item relative pl-8 pb-12 scroll-fade">
+                        <h3 class="text-xl font-semibold text-gray-800">First Lines of Code (Early 2023)</h3>
+                        <p class="text-gray-600 mt-2">The vision starts to take shape. The first prototype is built, focusing on a clean, calming interface and core features for meaningful interaction.</p>
+                    </div>
+                    <div class="timeline-item relative pl-8 pb-12 scroll-fade">
+                        <h3 class="text-xl font-semibold text-gray-800">Beta Launch (Mid 2023)</h3>
+                        <p class="text-gray-600 mt-2">We invite a small group of founding members to test the platform. Their invaluable feedback helps refine the experience and solidify our community values.</p>
+                    </div>
+                    <div class="timeline-item relative pl-8 scroll-fade">
+                        <h3 class="text-xl font-semibold text-gray-800">Public Opening (2024)</h3>
+                        <p class="text-gray-600 mt-2">Kendy & Sally officially opens to the public, ready to welcome everyone seeking connection, inspiration, and a place to belong.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-fade">
+                    <h2 class="text-4xl font-bold gradient-text">Our Core Values</h2>
+                    <p class="text-gray-600 mt-2">The principles that guide our community.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="glassmorphism rounded-2xl p-6 text-center transform transition-transform duration-75 ease-out hover:-translate-y-2 hover:shadow-xl">
+                        <div class="text-purple-400 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Connect Hearts & Minds</h3>
+                        <p class="text-gray-600 mt-2 text-sm">Fostering deep, authentic connections that transcend the digital space.</p>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center transform transition-transform duration-75 ease-out hover:-translate-y-2 hover:shadow-xl">
+                        <div class="text-pink-400 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Inspire Kindness & Growth</h3>
+                        <p class="text-gray-600 mt-2 text-sm">Creating a supportive environment for personal development and creative expression.</p>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center transform transition-transform duration-75 ease-out hover:-translate-y-2 hover:shadow-xl">
+                        <div class="text-orange-400 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Empower Change</h3>
+                        <p class="text-gray-600 mt-2 text-sm">Encouraging community-driven initiatives that make a positive impact.</p>
+                    </div>
+                    <div class="glassmorphism rounded-2xl p-6 text-center transform transition-transform duration-75 ease-out hover:-translate-y-2 hover:shadow-xl">
+                        <div class="text-teal-400 mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Blend Tech & Humanity</h3>
+                        <p class="text-gray-600 mt-2 text-sm">Using technology as a tool to enhance, not replace, our shared human experience.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Join Us Section -->
+        <section id="join" class="py-20 bg-lavender/20">
+            <div class="container mx-auto px-6">
+                <div class="max-w-xl mx-auto text-center scroll-fade">
+                    <h2 class="text-4xl font-bold gradient-text">Become a Part of Our Story</h2>
+                    <p class="text-gray-600 mt-2 mb-8">Create your account and start connecting with a community that cares.</p>
+                    <div class="glassmorphism rounded-2xl p-8 shadow-lg">
+                        <form>
+                            <div class="mb-4">
+                                <input type="text" placeholder="Full Name" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all" required>
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" placeholder="Email Address" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all" required>
+                            </div>
+                            <div class="mb-6">
+                                <input type="password" placeholder="Password" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all" required>
+                            </div>
+                            <button type="submit" class="cta-button w-full bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+                                Create Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 scroll-fade">
+                    <h2 class="text-4xl font-bold gradient-text">Get In Touch</h2>
+                    <p class="text-gray-600 mt-2">We'd love to hear from you. Questions, ideas, or just a friendly hello!</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10 items-start">
+                    <div class="glassmorphism rounded-2xl p-8 shadow-lg scroll-fade" style="transition-delay: 200ms;">
+                        <form>
+                            <div class="mb-4">
+                                <input type="text" placeholder="Your Name" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" required>
+                            </div>
+                            <div class="mb-4">
+                                <input type="email" placeholder="Your Email" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" required>
+                            </div>
+                            <div class="mb-4">
+                                <textarea placeholder="Your Message" rows="5" class="w-full p-3 rounded-lg bg-white/50 border border-white/30 focus:outline-none focus:ring-2 focus:ring-pink-400 transition-all" required></textarea>
+                            </div>
+                            <button type="submit" class="cta-button w-full bg-white text-gray-800 font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                    <div class="scroll-fade" style="transition-delay: 400ms;">
+                        <div class="rounded-2xl overflow-hidden shadow-lg">
+                            <iframe
+                                width="100%"
+                                height="400"
+                                frameborder="0"
+                                scrolling="no"
+                                marginheight="0"
+                                marginwidth="0"
+                                src="https://www.openstreetmap.org/export/embed.html?bbox=-122.42%2C37.77%2C-122.41%2C37.78&amp;layer=mapnik&amp;marker=37.775%2C-122.415"
+                                style="border: 1px solid black; border-radius: 1rem;"
+                            ></iframe>
+                        </div>
+                        <p class="text-gray-600 mt-4 text-center">Our virtual doors are always open, but we're headquartered in the heart of innovation, San Francisco, CA.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-cream py-8">
+        <div class="container mx-auto px-6 text-center text-gray-600">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="#" target="_blank" class="hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                </a>
+                <a href="#" target="_blank" class="hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                </a>
+                <a href="#" target="_blank" class="hover:text-pink-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm0 1.623c-2.387 0-2.71.01-3.66.052a3.27 3.27 0 00-1.18.22c-.577.228-1.035.51-1.484.958-.448.448-.73.896-.958 1.484-.16.41-.218.8-.22 1.18-.042.95-.052 1.274-.052 3.66s.01 2.71.052 3.66c.002.38.06.77.22 1.18.228.577.51 1.035.958 1.484.448.448.896.73 1.484.958.41.16.8.218 1.18.22.95.042 1.273.052 3.66.052s2.71-.01 3.66-.052a3.27 3.27 0 001.18-.22c.577-.228 1.035-.51 1.484-.958.448-.448.73-.896.958-1.484.16-.41.218-.8.22-1.18.042-.95.052-1.273.052-3.66s-.01-2.71-.052-3.66a3.27 3.27 0 00-.22-1.18c-.228-.577-.51-1.035-.958-1.484-.448-.448-.896-.73-1.484-.958-.41-.16-.8-.218-1.18-.22C15.026 3.633 14.7 3.623 12.315 3.623zM12 8.118a3.882 3.882 0 110 7.764 3.882 3.882 0 010-7.764zm0 6.132a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5zM16.846 6.405a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" /></svg>
+                </a>
+            </div>
+            <p>&copy; 2024 Kendy & Sally. All Rights Reserved. A community built with love.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Smooth Scrolling for nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                        // Close mobile menu on click
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // Sticky Header background change on scroll
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white/50', 'shadow-md');
+                } else {
+                    header.classList.remove('bg-white/50', 'shadow-md');
+                }
+            });
+
+            // Scroll-based Fade-in Animations
+            const fadeElems = document.querySelectorAll('.scroll-fade');
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeElems.forEach(elem => {
+                observer.observe(elem);
+            });
+        });
+    </script>
+
+</body>
+</html>
